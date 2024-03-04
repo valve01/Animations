@@ -1,0 +1,95 @@
+.features {
+	&__inner {
+		margin-top: 24px;
+	}
+	&__list {
+		display: grid;
+		grid-template-rows: repeat(2, 1fr);
+		grid-template-columns: repeat(2, 1fr);
+		gap: 7px 16px;
+		justify-items: center;
+	}
+	&__item {
+		display: grid;
+		grid-template-columns: 60px 1fr;
+		background-color: #eeeeee;
+		border-radius: 10px;
+		align-items: center;
+		justify-items: center;
+		width: 100%;
+	}
+	&__text {
+		padding: 10px 9px 10px 0;
+		justify-self: start;
+	}
+	&__text-rus {
+		display: block;
+		font-size: 10px;
+	}
+	&__text-chi {
+		display: block;
+		@extend %font-Microsoft-Jhenghei-400;
+		font-size: 10px;
+	}
+	&__delivery-speed {
+	}
+	&__money {
+	}
+	&__delivery-time {
+	}
+	&__natural-seafood {
+	}
+}
+
+.svg-features--delivery-speed-dims {
+	width: 37px;
+	height: 37px;
+}
+.svg-features--money-dims {
+	width: 43px;
+	height: 43px;
+}
+.svg-features--delivery-time-dims {
+	width: 37px;
+	height: 37px;
+}
+.svg-features--natural-seafood-dims {
+	width: 45px;
+	height: 45px;
+}
+
+// Анимация рисования контура svg-элемента
+
+// Принцип работы анимации: 
+// Вот у нас есть линия. Сначала мы накладываем на нее как бы "маску", чтобы наша линия стала пунктирной. Вид этого пунктира задает stroke-dasharray. 1 значение - это сколько будет отображено, 2 - скрыто, 3 - отображено и т.д. по циклу.
+// Если мы хотим полную анимацию всей линии, то нужно задать только одно значение, величиной со всю эту линию(18000) (если больше - то норм, если нужна только одна отрисовка).
+// Дальше через атрибут stroke-dashoffset (может быть отрицательным) мы задаем на сколько пунктов сместить от конечной точки к начальной нашу "маску" (stroke-dasharray) для пунктирного вида.
+// Чтобы анимация начиналась с начала то мы должны сместить ее на то же значение, - равное длинне всей линии. (18000) . Если же мы укажем например половину (9000), то анимация будет начинаться с середины, причем все что должно было быть нарисовано до этого момента будет уже нарисовано.
+
+// Далее в @keyframes указываем что в конечной точке анимации (100%) - наше смещение должно полностью исчезнуть (стать = 0) (Если же stroke-dashoffset при 100% будет отличен от 0, то анимация будет заканчиваться не конечной точке.
+
+.svg-anim-line {
+	background-color: blue;
+	path {
+		stroke-width: 10px;
+		stroke: #fff;
+
+		// Атрибут определяющий вид пунктирной линии, используемый для рисования контура svg-элемента
+		stroke-dasharray: 17826;
+		// stroke-dasharray: 10000 400  5000 200;
+
+		// Атрибут, определяет сдвиг массива dash-array относительно начального положения.
+		stroke-dashoffset:17826;
+
+		animation: svgAnim 20s linear infinite 2s;
+	}
+	@keyframes svgAnim {
+		100%{
+
+			// Чтобы анимация от начала до конца работала, тут должен быть 0
+			stroke-dashoffset: 0;
+			// Так анимация закончится, пройдя только 300пунктов
+			// stroke-dashoffset: 15000;
+		}
+	}
+}
