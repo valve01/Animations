@@ -6,7 +6,7 @@ const line = document.querySelector('.svg-anim-line path')
 
 function getPathLength (figure){
 	// Math.trunc - удаляет дробную часть у числа (все после запятой), без округления.
-	console.log(Math.trunc(figure.getTotalLength()))
+	// console.log(Math.trunc(figure.getTotalLength()))
 	// Переопределяем значения strokeDasharray и strokeDashoffset, вычисленными с помощью js метода.
 	line.style.strokeDasharray=figure.getTotalLength()
 	line.style.strokeDashoffset=figure.getTotalLength()
