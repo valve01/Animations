@@ -7,7 +7,7 @@
 .pic {
 	width: 301px;
 	height: 236px;
-	background: url('../../img/main/menu/dish-6.png') no-repeat;
+	background: url('../../img/main/menu/dish-4.png') no-repeat;
 	background-size: cover;
 	cursor: pointer;
 	position: relative;
@@ -16,51 +16,52 @@
 		content: '';
 		position: absolute;
 		width: 301px;
-		height: 30px;
-		background: url('../../img/main/menu/dish-6.png') no-repeat;
+		height: 36px;
+		background: url('../../img/main/menu/dish-4.png') no-repeat;
 		background-size: cover;
 		filter: sepia(80%);
 		opacity: 0;
 	}
 	&:hover::before {
 		opacity: 0.8;
-		animation: glitch 1s linear infinite ;
+		filter: blur(2px);
+		animation: glitch 2s linear infinite ;
 	}
 }
 @keyframes glitch {
 	0%{
 		top:0;
-		background-position: 0px 0;
+		background-position: -30px 0;
 
 	}
 	20%{
 		top:80px;
-		background-position: 50px -80px;
+		background-position: 0px -80px;
 
 	}
 	40%{
-		top:120px;
-		background-position: -20px -160px;
+		top:160px;
+		background-position: 30px -160px;
 
 	}
 	50%{
-		top:125px;
-		background-position: 0px -165px;
+		top:200px;
+		background-position: 0px -200px;
 
 	}
 	60%{
-		top:130px;
-		background-position: 0px -130px;
+		top:160px;
+		background-position: 30px -160px;
 
 	}
 	80%{
-		top:180px;
-		background-position: 20px -200px;
+		top:80px;
+		background-position: 0px -80px;
 
 	}
 	100%{
-		top:236px;
-		background-position: 20px -220px;
+		top:0;
+		background-position: -30px 0;
 
 	}
 }
