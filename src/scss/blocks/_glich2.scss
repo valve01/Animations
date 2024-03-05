@@ -1,0 +1,56 @@
+.wrap {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.pic {
+	width: 301px;
+	height: 236px;
+	background: url('../../img/main/menu/dish-6.png') no-repeat;
+	background-size: cover;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	&::before {
+		content: '';
+		position: absolute;
+		width: 301px;
+		height: 23.6px;
+		background: url('../../img/main/menu/dish-6.png') no-repeat;
+		background-size: cover;
+		filter: sepia(80%);
+		opacity: 0;
+	}
+	&:hover::before {
+		opacity: 0.7;
+		animation: glitch 2s linear infinite ;
+	}
+}
+@keyframes glitch {
+	0%{
+		top:0;
+		background-position: 20px 0;
+
+	}
+	20%{
+		top:80px;
+		background-position: 20px -80px;
+
+	}
+	40%{
+		top:0;
+		background-position: 20px 0;
+
+	}
+	80%{
+		top:0;
+		background-position: 20px 0;
+
+	}
+	100%{
+		top:0;
+		background-position: 20px 0;
+
+	}
+}

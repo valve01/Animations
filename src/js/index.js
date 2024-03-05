@@ -8,7 +8,7 @@ import './modules/about-slider-outside';
 import './modules/reviews-slider';
 
 // Анимации
-// import './modules/svg-anim';
+import './modules/svg-anim';
 
 
 

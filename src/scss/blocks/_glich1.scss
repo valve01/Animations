@@ -1,0 +1,106 @@
+.box-glich1 {
+	--glich-width: 80vmax;
+	--glich-height: calc(80vmax * 1.25);
+}
+.image-glich1 {
+	position: relative;
+	margin: 0 auto;
+	overflow: hidden;
+
+	width: var(--glich-width);
+	max-width: 300px;
+
+	height: var(--glich-height);
+	max-height: calc(200px * 1.25);
+
+	--gap-horizontal: 5px;
+	--gap-vertical: 20px;
+	--time-anim: 5s;
+	--blend-mode-1: none;
+	--blend-mode-2: exclusion;
+	// --blend-mode-3: hard-light;
+	// --blend-mode-4: overlay;
+	--blend-mode-3: none;
+	--blend-color-1: transparent;
+	--blend-color-2: blue;
+	--blend-color-3: transparent;
+	&:hover {
+		.glich1-effect:nth-child(n + 2) {
+			opacity: 1;
+		}
+		.glich1-effect:nth-child(2) {
+			transform: translate3d(var(--gap-horizontal), 30px, 0);
+			animation: glich1 var(--time-anim) infinite linear alternate;
+		}
+		.glich1-effect:nth-child(3) {
+			transform: translate3d(calc(-1 * var(--gap-horizontal)) , 0, 0);
+			animation: glich2 var(--time-anim) infinite linear alternate;
+		}
+	}
+}
+@keyframes glich1 {
+	0%{
+		clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+	}
+	20%{
+		clip-path: polygon(0 10%, 100% 10%, 80% 30%, 0 10%);
+	}
+	40%{
+		clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+	}
+	80%{
+		clip-path: polygon(80% 2%, 10% 56%, 89% 30%, 84 9%);
+	}
+	100%{
+		clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+	}
+}
+@keyframes glich1 {
+	0%{
+		clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+	}
+	26%{
+		clip-path: polygon(0 10%, 100% 10%, 80% 30%, 0 10%);
+	}
+	37%{
+		clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+	}
+	65%{
+		clip-path: polygon(80% 2%, 10% 56%, 89% 30%, 84 9%);
+	}
+	100%{
+		clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+	}
+}
+.glich1-effect {
+	background-size: cover;
+	position: absolute;
+	top: calc(-1 * var(--gap-vertical));
+	left: calc(-1 * var(--gap-horizontal));
+
+	// width: 500px;
+	// height: 500px;
+	width: calc(100% + var(--gap-horizontal) * 2);
+	height: calc(100% + var(--gap-vertical) * 2);
+
+	background-blend-mode: var(--blend-mode-1);
+
+	transform: translate3d(0, 0, 0);
+}
+.glich1-effect {
+	&:nth-child(1) {
+		background-size: cover;
+		background: url('../../img/main/menu/dish-10.png') no-repeat 50% 0;
+	}
+	&:nth-child(2) {
+		background-color: var(--blend-color-2);
+		background-blend-mode: var(--blend-mode-2);
+	}
+	&:nth-child(3) {
+		background-color: var(--blend-color-3);
+		background-blend-mode: var(--blend-mode-3);
+	}
+	&:nth-child(n + 2) {
+		opacity: 0;
+	}
+}
