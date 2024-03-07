@@ -1,0 +1,92 @@
+// Важно: чтобы размеры .cube и .side совпадали, а .wrap был размером не меньше .cube
+
+.cube-wrap {
+	height: 300px;
+	width: 300px;
+	margin: 200px auto;
+	// perspective - задает глубину 3D пространства (проще говоря на какое расстояние отдалить элемент от "глаза" пользователя.)
+	// Если perspective задан родителю, тогда родитель становится 3D пространством для вложенных элементов (наш случай). И все элементы трансформируются внутри ЕДИНОГО 3D пространства.
+	// Также perspective можно задать первым значением свойства transform. transform: perspective(500px)
+	// Тогда каждый такой элемент будет трансформироваться каждый внутри своего пространства.
+	perspective: 500px;
+}
+
+// translateZ и scaleZ влияет на отображение элемента прямопропорционально и равнозначно. Например для элемента визуально будет иметь один и тот же эффект:
+// scaleZ(2.0)
+// translateZ (100px)
+// и
+// translateZ (200px)
+
+// transform-origin - определяет точку, относительно которой происходит он будет трансформироваться для 2D -2 значения, для 3D -3 значения. (по умолчанию center center 0px) (x y z) (для z можно передавать значения только в  px. Для других можно и % и направления.
+.cube {
+	width: inherit;
+	height: inherit;
+	position: relative;
+	transform: rotateX(-30deg) rotateY(45deg);
+	// По умолчанию perspective создает 3D -пространство только для прямого потомка, у нас это .cube. А вот чтобы 3D пространство сохранялось для дочерних элементо .cube. Нужно прописать
+	// transform-style: preserve-3d; (по-умолчанию: flat)
+	// Теперь дочерние элементы класса .cube могут трансформироваться в одном пространстве с ним.
+	transform-style: preserve-3d;
+	animation: cube-rotate 10s linear infinite;
+	// animation-iteration-count: 0;
+}
+.side {
+	position: absolute;
+	width: inherit;
+	height: inherit;
+	border: 3px solid #000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 50px;
+	// backface-visibility - позволяет отключить отображение оборотной стороны элемента
+	// backface-visibility: hidden;
+}
+.front {
+	background-color: red;
+	// translateZ - положительные значения двигают элемент лицевой стороной вперед.
+	// Важно не вперед относительно "глаза" пользователя, а вперед именно относительно своей же лицевой стороны. Это значит, что если повернуть лицевую сторону, то и направление движения изменится в соответствующуюю сторону.
+	transform: translateZ(150px);
+}
+.back {
+	transform: rotateY(180deg) translateZ(150px);
+	background-color: grey;
+}
+.left {
+	transform: rotateY(-90deg) translateZ(150px);
+
+	background-color: green;
+}
+.right {
+	background-color: blue;
+	transform: rotateY(90deg) translateZ(150px);
+}
+.top {
+	transform: rotateX(90deg) translateZ(150px);
+	background-color: purple;
+}
+.bottom {
+	background-color: orange;
+	transform: rotateX(-90deg) translateZ(150px);
+}
+
+@keyframes cube-rotate {
+	0% {
+		transform: rotateX(-30deg) rotateY(45deg) rotateZ(0deg);
+	}
+	20% {
+		transform: rotateX(-102deg) rotateY(189deg) rotateZ(144deg);
+	}
+	40% {
+		transform: rotateX(-174deg) rotateY(333deg) rotateZ(288deg);
+	}
+	60% {
+		transform: rotateX(-246deg) rotateY(477deg) rotateZ(432deg);
+	}
+	80% {
+		transform: rotateX(-318deg) rotateY(621deg) rotateZ(576deg);
+	}
+	100% {
+		transform: rotateX(-390deg) rotateY(765deg) rotateZ(720deg);
+	}
+}

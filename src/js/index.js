@@ -9,6 +9,7 @@ import './modules/reviews-slider';
 
 // Анимации
 import './modules/svg-anim';
+import './modules/cube-rotate';
 
 
 
