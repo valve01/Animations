@@ -1,0 +1,38 @@
+.parallax-g-title {
+	font-size: 50px;
+	text-transform: uppercase;
+}
+.parallax-g-wrapper {
+	margin-right: -20px;
+	margin-left: -20px;
+	position: relative;
+	min-height: 100vh;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+}
+
+
+.parallax-g-far {
+	background: url('../../img/animations/parallax/layer-base.png');
+}
+.parallax-g-middle {
+	background: url('../../img/animations/parallax/layer-middle.png');
+}
+.parallax-g-close {
+	background: url('../../img/animations/parallax/layer-front.png');
+}
+
+.parallax-g-bg {
+	width: 110%;
+	left: 0;
+	top: 0;
+	background-repeat: no-repeat;
+	background-position: center;
+	// Странно, но не работает если background-size прописать в background у каждого слоя. или .parallax-g-bg {background-size:cover) описать до слоев.
+	background-size: cover;
+	position: absolute;
+	height: 100%;
+}
