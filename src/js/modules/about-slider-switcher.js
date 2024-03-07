@@ -9,9 +9,9 @@ function sliderSwitcher() {
 
 	insideBtnEl.addEventListener('click', () => {
 // включает вибрацию как в звездных войнах при нажатии на кнопку "внутри"
-		navigator.vibrate([
-			500, 110, 500, 110, 450, 110, 200, 110, 170, 40, 450, 110, 200, 110, 170, 40, 500,
-		]);
+		// navigator.vibrate([
+		// 	500, 110, 500, 110, 450, 110, 200, 110, 170, 40, 450, 110, 200, 110, 170, 40, 500,
+		// ]);
 		// Конец вибрации
 		outsideSlider.classList.add('aboutUs-slider-hidden');
 		insideSlider.classList.remove('aboutUs-slider-hidden');
