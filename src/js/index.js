@@ -11,6 +11,7 @@ import './modules/header-slider';
 // import './modules/svg-anim';
 import './modules/cube-rotate';
 import './modules/parallax-g';
+import './modules/parallax-v';
 
 
 

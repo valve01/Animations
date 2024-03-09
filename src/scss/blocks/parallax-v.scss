@@ -1,0 +1,50 @@
+.parallax-v-title {
+	font-size: 50px;
+	text-transform: uppercase;
+	color: #fff;
+	text-align: center;
+	position: relative;
+	top: -60px;
+	//  will-change предупреждает браузер, какое свойсвтво должно вскоре измениться, чтобы тот произвел нужные вычисления и картинка не тормозила.
+	will-change: transform;
+	transform: translate3d(0, calc(var(--scrollTop) / 1.5), 0);
+}
+.parallax-v-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: -25px;
+	margin-right: -20px;
+	margin-left: -20px;
+	position: relative;
+	min-height: 100vh;
+	overflow: hidden;
+}
+
+.parallax-v-far {
+	will-change: transform;
+	z-index: -1;
+	transform: translate3d(0, calc(var(--scrollTop) / 1.5), 0);
+	background: url('../../img/animations/parallax/layer-base.png');
+}
+.parallax-v-middle {
+	transform: translate3d(0, calc(var(--scrollTop) / 3), 0);
+	will-change: transform;
+	background: url('../../img/animations/parallax/layer-middle.png');
+}
+.parallax-v-close {
+	transform: translate3d(0, calc(var(--scrollTop) / 5), 0);
+	will-change: transform;
+	background: url('../../img/animations/parallax/layer-front.png');
+}
+
+.parallax-v-bg {
+	width: 100%;
+	top: 0;
+	background-repeat: no-repeat;
+	background-position: center;
+	// Странно, но не работает если background-size прописать в background у каждого слоя. или .parallax-v-bg {background-size:cover} описать до слоев.
+	background-size: cover;
+	position: absolute;
+	height: 100%;
+}
