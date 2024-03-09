@@ -1,6 +1,6 @@
 function parallaxG(event) {
+	// event.clientX - содержит координату курсора по X
 	const corX = event.clientX;
-
 	// console.log(event.clientX) ;
 	const layers = this.querySelectorAll('.parallax-g-bg');
 	layers.forEach((layer) => {
@@ -9,4 +9,5 @@ function parallaxG(event) {
 		layer.style.transform = `translateX(${corX / 1000*speedAtr}px)`;
 	});
 }
+// mousemove - событие движения мыши.
 document.addEventListener('mousemove', parallaxG);
